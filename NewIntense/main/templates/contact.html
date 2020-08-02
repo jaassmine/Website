@@ -1,0 +1,218 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<head>
+    <title>intense placement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/contactStyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/bootstrap-4.5.0/css/bootstrap.css' %}">
+<link href="{% static 'plugins/fontawesome-free-5.13.0-web/css/fontawesome.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/fontawesome-free-5.13.0-web/css/brands.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/fontawesome-free-5.13.0-web/css/solid.css' %}" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+<script src="{% static 'styles/bootstrap-4.5.0/js/bootstrap.min.js' %}" ></script>
+</head>
+<body>
+<section id="header">
+  <div class="menu-bar">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'img/ipl.png' %}">
+        </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" >
+        <li class="nav-item ">
+          <a class="nav-link " href="{% url 'main:homepage' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/about/">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/contact/">Contact Us</a>
+        </li>
+        {% if user.is_authenticated %}
+          {% if user.is_candidate %}
+            <li class="nav-item">
+              <a class="nav-link  " href="/jobs/">Jobs</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+              <div class="dropdown-menu menu-bar" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item nav-link" href="{% url 'account:candidate_dash' %}" id = "candidate_dashboard"  href="#">Profile</a>
+              <a class="dropdown-item nav-link" href="{% url 'account:logout' %}" id = "logoutButton" href="#">Logout</a>
+            </div>
+          </li>
+          {% elif user.is_partner %}
+            <li class="nav-item">
+              <a class="nav-link  " href="/patcomm/">Partner's Zone</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  " href="/patcomm/">Partner's Zone</a>
+            </li>
+            <li  class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+            <div class="dropdown-menu menu-bar" aria-labelledby="navbarDropdown" >
+              <a class="dropdown-item nav-link" href="{% url 'account:partner_dash' %}" id = "candidate_dashboard" >Profile</a>
+              <a class="dropdown-item nav-link" href="{% url 'account:logout' %}" id = "logoutButton" >Logout</a>
+            </div>
+            </li>
+          {% endif %}
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link " href="/employer/">Employer's Zone</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link  " href="{% url 'account:partnerReg' %}">Partner's Zone</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Login/Sigin
+          </a>
+          <div class="dropdown-menu menu-bar" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item nav-link"  id = "login_Button"  href="{% url 'account:login' %}">For Candidate</a>
+            <a class="dropdown-item nav-link"   id = "login_Button" href="{% url 'account:loginp' %}">For Partner</a>
+          </div>
+          </li>
+        {% endif %}
+      </ul>
+        </div>
+      </nav>
+  </div> 
+
+<div class="banner">
+    <h1 class="text-center">Contact Us</h1>
+    
+</div>
+</section>
+<section class="banner2">
+<div class="card-deck">
+    <div class="card">
+        <i class="fas fa-envelope fa-3x"></i>
+        <div class="card-body">
+            <p class="card-text"><a href="mailto:hr@intenseplacement.com">hr@intenseplacement.com</a> <br>
+                <a href="mailto:manager@intenseplacement.com" >manager@intenseplacement.com</a>
+            </p>
+        </div>
+    </div>
+    <div class="card ">
+        <i class="fas fa-phone fa-3x"></i>
+        <div class="card-body">
+            <p class="card-text "><a href="#">7011-036-020</a><br><a href="#">7838-936-118</a>
+            </p>
+        </div>
+    </div>
+    <div class="card ">
+        <i class="fas fa-map-marker-alt fa-3x"></i>
+        <div class="card-body">
+            <p class="card-text "><a href="#">H-55/A , Shiv Ram Park , Nangloi , New Delhi-41</a>
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+{% if message %}
+<center>
+  <h2>Thanks {{ message_name }}</h2>
+  <p>We have recieved your email and will respond shortly...</p>
+</center>
+<div>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14002.988820098652!2d77.0573458!3d28.667287!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x95df2576821c9451!2sIntense%20Placement%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1589795151848!5m2!1sen!2sin" width="600" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
+{% else %}
+<section class="sec2" >
+  <div class="row">
+    <div class="col-4" >
+      <div class="form-group pl-3">
+        <form class=" cont" method="POST">
+          {%csrf_token%}      
+          {{form | crispy}}
+          <button type="submit"   class="btn btn-primary text-white">Submit</button>
+        </form>
+      </div>   
+    </div>
+    <div class=" col-5 ml-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14002.988820098652!2d77.0573458!3d28.667287!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x95df2576821c9451!2sIntense%20Placement%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1589795151848!5m2!1sen!2sin" width="600" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+  </div>  
+</section>  
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<footer class="page-footer font-small pt-4 pl-md-5">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+      <div class="col-md-4 mt-md-0 mt-4 text-left" >
+        <h5 class="text-uppercase" id="desc">Intense Placement</h5>
+        <p id = "desc">Our Comapny provides you hastle free recruting and save candidates from being cheated .Our main motto is to save each and every candidate from being cheated by fraud consultants or recruiters who asks money before getting the job. </p>
+      </div>
+      <!-- <hr class="clearfix w-100 d-md-none pb-3"> -->
+      <div class="col-md-4 d-none d-lg-block d-xl-block text-center" >
+        <h5 class="text-uppercase">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a href="/contact/">Contact us</a>
+          </li>
+          <li>
+            <a href="/about/">About us</a>
+          </li>
+          <li>
+            <a href="/faq/">FAQs</a>
+          </li>
+          <li>
+            <a href="#!">Terms of use</a>
+          </li>
+        </ul>
+      </div> 
+      <div class="col-3 col-md-4 pl-md-4 d-none d-lg-block d-xl-block text-left">
+        <h5 class="text-uppercase">Intense Placement </h5>
+       <!--  <p>Subscribe to kormosala Pacific newsletter to get thelatest jobs posted, candidates, and other latestnews stay update.</p>
+        <form id = "subs">
+          <div class="field">
+              <div class="input-group">
+                  <input type="email" name="EMAIL" class="form-control" placeholder="Email Address...">
+                  <span class="input-group-btn">
+                      <button class="btn btn-submit" type= "submit">
+                          <i class="fa fa-envelope-o"></i>
+                      </button>
+                  </span>
+              </div>
+          </div>
+        </form> -->
+        <p id = "desc">Our Comapny is creating Entrepreneurs.Because of our portal we are connecting many of the Genuine Consultants , Recruiters or Freelancers to Big MNC's which previously they don't get empanel with,because of their major compliance issue . </p>
+      </div>
+    </div>
+  </div>
+  <div class="container " style="height: 100px;">
+      <div class="row">
+          <div class="col-md-12 py-3">
+          <h5 class= "pb-2 text-center">Follow Us</h5>
+          <div class="mb-2 text-center">
+            <a href = "https://www.facebook.com/Intense-Placement-Private-Limited-102928834808269/" class="fb-ic" style="color: rgb(255, 255, 255);">
+              <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href = "#" class="tw-ic" style="color:  rgb(255, 255, 255);">
+              <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href = "https://www.linkedin.com/company/intense-placement-private-limited" class="li-ic" style="color:  rgb(255, 255, 255);">
+              <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href = "https://www.instagram.com/invites/contact/?i=zmndwoirzzee&utm_content=hftfvyr" class="ins-ic" style="color:  rgb(255, 255, 255);">
+              <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="footer-copyright text-center py-2">© 2020 Copyright:
+    <h6>Intense Placement</h6>
+  </div>
+</footer>
+</body>
+</html>

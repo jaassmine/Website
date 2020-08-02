@@ -1,0 +1,133 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+body
+{
+	overflow-x:hidden; 	
+}
+.menu-bar
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+	
+}
+.nav-link
+{
+font-size: 16px;
+color: #ffffff !important;
+margin:2px;
+}
+
+.navbar-nav{
+		text-align: right;
+}
+
+.menu-bar .navbar-toggler
+{
+padding-right: 0;
+outline: none;
+border: none;
+}
+.navbar-nav a:hover {
+  background-color:#6db9ef;
+
+}
+.navbar img{
+    margin-left: 0.6em;
+    height: 3em;
+    /* border-radius: 40%; */
+}
+
+.banner
+{
+    height:95vh;
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/static/img/aboutt.jpg");
+	background-size: cover;
+	background-position: center;
+	color: #ffffff;
+}
+
+.banner h1
+{
+padding-top: 120px;
+font-size: 30px;
+letter-spacing: 3px;
+font-weight: 500;
+text-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+.card i {
+    padding-top: 5px;
+    text-align:center;
+}
+.sec1 .card
+{
+    background-color:rgba(0,0,0,0.2);
+}
+.sec1 .card-deck  :hover
+{
+    background-color:#5fca6d ;
+    color: #ffffff;
+
+}
+
+
+.sec2 .card
+{
+    background-color:rgba(0,0,0,0.1);
+}
+
+.sec2 .card-deck  :hover
+{
+    background-color:#54e6c1 ;
+
+    ;
+    color: #ffffff;
+
+}
+
+.sec3 .card
+{
+    background-color:rgba(0,0,0,0.05);
+}
+
+.sec3 .card-deck  :hover
+{
+    background-color:#6db9ef ;
+    color: #ffffff;
+
+}
+
+footer
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+color: #ffffff;
+}
+footer ul li a {
+	color: rgb(252, 250, 250);
+}
+
+footer p 
+{
+    font-weight: normal;
+}
+
+footer img{
+    margin-left: 1em;
+    height: 8rem;
+    width: 8rem;
+}
+
+@media only screen and (max-width: 1400px) {
+    
+    .banner
+    {
+        height: auto;
+		width: auto;
+		font-size: small;
+		
+    }
+	
+	
+
+}

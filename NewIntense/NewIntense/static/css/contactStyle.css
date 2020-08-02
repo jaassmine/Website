@@ -1,0 +1,132 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+body
+{
+	overflow-x:hidden; 	
+}
+.menu-bar
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+	
+}
+
+.nav-link
+{
+font-size: 16px;
+color: #ffffff !important;
+margin:2px;
+}
+
+.navbar-nav{
+		text-align: right;
+}
+
+.menu-bar .navbar-toggler
+{
+padding-right: 0;
+outline: none;
+border: none;
+}
+.navbar-nav a:hover {
+  background-color:#6db9ef;
+
+}
+
+.navbar img{
+    margin-left: 0.6em;
+    height: 3em;
+    /* border-radius: 40%; */
+}
+
+
+.banner
+{
+    height:60vh;
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/static/img/contact.jpg");
+	background-size: cover;
+	background-position: center;
+	
+}
+.banner h1
+{
+    padding-top: 90px;
+font-size: 40px;
+letter-spacing: 6px;
+font-weight: 500;
+text-shadow: 0 0 30px rgba(0,0,0,0.5);
+
+    color: #ffffff;
+}
+
+.map{
+    padding-left: 650px;
+}
+.card i
+{
+    text-align: center;
+
+}
+.card-text
+{
+    text-align: center;
+}
+.banner2 .card
+{ padding-top: 20px;
+    border: none;
+    color:#4cc3fa;
+}
+.sec2
+{
+    height: 65vh;
+   
+}
+.card a
+{
+    color:#4cc3fa;
+}
+.foot
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+color: #ffffff;
+}
+
+@media only screen and (max-width: 1200px) {
+    .cont {
+      width: 130%;
+    }
+    .map
+    {
+        max-width: auto;
+    }
+    .banner
+    {
+        height: auto;
+        width: auto;
+    }
+   
+}
+
+
+footer
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+color: #ffffff;
+}
+footer ul li a {
+	color: rgb(252, 250, 250);
+}
+
+footer p 
+{
+    font-weight: normal;
+}
+
+footer img{
+    margin-left: 1em;
+    height: 8rem;
+    width: 8rem;
+}

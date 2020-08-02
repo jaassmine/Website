@@ -1,0 +1,226 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<head>
+    <title>intense placement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/partnerStyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/bootstrap-4.5.0/css/bootstrap.css' %}">
+<link href="{% static 'plugins/fontawesome-free-5.13.0-web/css/fontawesome.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/fontawesome-free-5.13.0-web/css/brands.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/fontawesome-free-5.13.0-web/css/solid.css' %}" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+<script src="{% static 'styles/bootstrap-4.5.0/js/bootstrap.min.js' %}" ></script>
+</head>
+<body>
+<section id="header">
+    <div class="menu-bar">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'img/ipl.png' %}">
+          </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto" >
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{% url 'main:homepage' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " href="/about/">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " href="/employer/">Employer's Zone</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link  " href="/partner/">Partner's Zone</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " href="/contact/">Contact Us</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        {% if user.is_candidate %}
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+                            <div class="dropdown-menu menu-bar" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item nav-link" href="{% url 'account:candidate_dash' %}" id = "candidate_dashboard"  href="#">Profile</a>
+                            <a class="dropdown-item nav-link" href="{% url 'account:logout' %}" id = "logoutButton" href="#">Logout</a>
+                          </div>
+                        {% else %}
+                          <div class="dropdown-menu menu-bar" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item nav-link" href="{% url 'account:partner_dash' %}" id = "candidate_dashboard"  href="#">Profile</a>
+                            <a class="dropdown-item nav-link" href="{% url 'account:logout' %}" id = "logoutButton" href="#">Logout</a>
+                          </div>
+                        {% endif %}
+                        </li>
+                      {% else %}
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login/Sigin
+                        </a>
+                        <div class="dropdown-menu menu-bar" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item nav-link" data-toggle="modal" data-target="#exampleModalCenterCandidate" id = "login_Button"  href="#">For Candidate</a>
+                          <a class="dropdown-item nav-link"  data-toggle="modal" data-target="#exampleModalCenterPartner" id = "login_Button" href="#">For Partner</a>
+                        </div>
+                        </li>
+                      {% endif %}
+                </ul>
+            </div>
+          </nav>
+    </div>
+<div class="banner text-center">
+    <div class="row">
+    <div class=" col-4"><h1 class=" hh text-white">Welcome To Our Partner Zone</h1></div>
+    <div class=" text-white  col-4 ml-1" >
+      <!-- <form method="POST">
+        {%csrf_token%}
+        <table>
+          <tr colspan=2>
+            {{form | crispy}}
+              <button type="submit" class="btn btn-primary text-white">Submit</button>
+          </tr>
+        </table>
+      </form> -->
+		 <div class=" patform ml-1" >
+				<form action="partnerSubmit" id="pf" class="needs-validation">
+          {% csrf_token %}
+          {{ form.organisation_Type}}
+					<!-- <select class="form-control" id="sel1">
+						<option disabled selected>Organization Type</option>
+						<option>Placement Agency</option>
+						<option>Freelancer</option>
+						<option>NGO</option>
+						<option>Training Institute</option>
+						<option>Cyber Cafe</option>
+						<option>Colleges</option>
+					</select>
+          <br> -->
+					<div class="form-group mt-3 mb-3">
+            {{form.organisationName}}
+						<!-- <input type="text" class="form-control" id="oname" placeholder="Organization Name" name="oname" required> -->
+					</div>
+					<div class="form-group mb-3">
+            {{form.name}}    
+						<!-- <input type="text" class="form-control" id="name" placeholder="Name" name="name" required> -->
+					</div>
+					<div class="form-group mb-3">
+          {{form.email}}
+						<!-- <input type="email" class="form-control" id="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> -->
+					</div>
+					<div class="form-group mb-3">
+            {{form.contact_Number}}
+						<!-- <input type="phone" class="form-control" id="contact" placeholder="Contact Number(123-456-7890)" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required> -->
+					</div>
+					<div class="form-group mb-3">
+            {{form.experience}}
+						<!-- <input type="text" class="form-control" id="exph" placeholder="Experience in Hiring" name="exph" required> -->
+					</div>
+					<button type="submit " style="float:center"class="btn btn-primary text-white">Submit</button>
+				</form>
+		</div> 
+    </div>
+</div>
+</div>
+</section>
+    
+    
+
+<footer class="foot font-small pt-4 pl-md-5" >
+  <!-- <footer class="page-footer font-small pt-4 pl-md-5"> --> 
+    <div class="container-fluid text-center text-md-left">
+      <div class="row">
+        <div class="col-md-4 mt-md-0 mt-4 text-left" >
+          <h5 class="text-uppercase" id="desc">Intense Placement</h5>
+          <p id = "desc">Our Comapny provides you hastle free recruting.Our Comapny provides you hastle free recruting.Our Comapny provides you hastle free recruting. </p>
+        </div>
+        <!-- <hr class="clearfix w-100 d-md-none pb-3"> -->
+        <div class="col-md-4 d-none d-lg-block d-xl-block text-center" >
+          <h5 class="text-uppercase">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Contact us</a>
+            </li>
+            <li>
+              <a href="#!">About us</a>
+            </li>
+            <li>
+              <a href="#!">FAQs</a>
+            </li>
+            <li>
+              <a href="#!">Terms of use</a>
+            </li>
+          </ul>
+        </div> 
+        <div class="col-3 col-md-4 pl-md-4 d-none d-lg-block d-xl-block text-left">
+          <h5 class="text-uppercase">Sign up for Everyday newsletter</h5>
+          <p>Subscribe to kormosala Pacific newsletter to get thelatest jobs posted, candidates, and other latestnews stay update.</p>
+          <form id = "subs">
+            <div class="field">
+                <div class="input-group">
+                    <input type="email" name="EMAIL" class="form-control" placeholder="Email Address...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-submit" type= "submit">
+                            <i class="fa fa-envelope-o"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container " style="height: 100px;">
+        <div class="row">
+            <div class="col-md-12 py-3">
+            <h5 class= "pb-2 text-center">Follow Us</h5>
+            <div class="mb-2 text-center">
+              <a href = "https://www.facebook.com/Intense-Placement-Private-Limited-102928834808269/" class="fb-ic" style="color: rgb(255, 255, 255);">
+                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+              <a href = "#" class="tw-ic" style="color:  rgb(255, 255, 255);">
+                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+              <!-- Google +-->
+              <!-- <a  href="#" class="gplus-ic" style="color :rgb(36, 136, 139);">
+                <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a> -->
+              <a href = "https://www.linkedin.com/company/intense-placement-private-limited" class="li-ic" style="color:  rgb(255, 255, 255);">
+                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+              <a href = "#" class="ins-ic" style="color:  rgb(255, 255, 255);">
+                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-2">© 2020 Copyright:
+      <h6>Intense Placement</h6>
+    </div>
+</footer>
+<script>
+  /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+//We start indexing at one because CSRF_token is considered and input field 
+*/
+
+//Query All input fields
+
+var form_fields = document.getElementsByTagName('input')
+form_fields[0].placeholder='Organisation Name';
+form_fields[1].placeholder='Name';
+form_fields[2].placeholder='Email';
+form_fields[3].placeholder='Contact Number';
+form_fields[4].placeholder='Experience'
+
+
+//for (var field in form_fields){	
+//form_fields[field].className += ' form-control'
+//}
+</script>
+
+</body>
+</html>

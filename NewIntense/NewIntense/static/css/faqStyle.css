@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+body
+{
+	overflow-x:hidden; 	
+}
+.menu-bar
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+	
+}
+
+.nav-link 
+{
+font-size: 16px;
+color: #ffffff !important;
+margin:2px;
+}
+
+.navbar-nav{
+		text-align: right;
+}
+
+.menu-bar .navbar-toggler
+{
+padding-right: 0;
+outline: none;
+border: none;
+}
+
+.navbar-nav a:hover {
+  background-color:#6db9ef;
+
+}
+
+/* .banner
+{
+	/*padding-top: 50vh;
+    height:80vh;
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/static/img/homee.png");
+	background-size: cover;
+	background-position: center;
+	color: #ffffff;
+} */
+
+.banner h1
+{
+padding-top: 120px;
+font-size: 35px;
+letter-spacing: 6px;
+font-weight: 600;
+text-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+footer
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+color: #ffffff;
+}
+
+footer p 
+{
+    font-weight: normal;
+}
+
+footer img{
+    margin-left: 1em;
+    height: 8rem;
+    width: 8rem;
+}
+footer ul li a {
+	color: rgb(252, 250, 250);
+}
+
+.navbar img{
+    margin-left: 0.6em;
+    height: 3em;
+    /* border-radius: 40%; */
+}
