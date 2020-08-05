@@ -17,7 +17,7 @@ class JobAdmin(admin.ModelAdmin):
 				"job_loc"
 				]
 	list_display = ('job_title' , 'job_company' ,'job_sal' , 'job_loc' )
-	list_filter = ('job_company' , 'job_title')
+	list_filter = ('job_company' , 'job_title','job_loc')
 
 class CommissionAdmin(admin.ModelAdmin):
 	fields = [
@@ -34,12 +34,12 @@ class CommissionAdmin(admin.ModelAdmin):
 				"g_period"
 				]
 	list_display = ('job_title' , 'company_title' ,'job_sal' , 'job_loc' )
-	list_filter = ('company_title' , 'job_title')	
+	list_filter = ('company_title' , 'job_title','job_loc')	
 
 class ApplyAdmin(admin.ModelAdmin):
 
 	list_display = ('candidate' , 'job', 'name' ,'email')
-	list_filter = ('candidate' , 'job')	
+	list_filter = ('candidate' , 'job','current_City')	
 	search_fields = ['job__job_title' , 'candidate__user__username']
 
 class EnquiryAdmin(admin.ModelAdmin):
@@ -50,7 +50,7 @@ class EnquiryAdmin(admin.ModelAdmin):
 class ApplyPAdmin(admin.ModelAdmin):
 
 	list_display = ('partner' , 'job', 'name' ,'email')
-	list_filter = ('partner' , 'job')	
+	list_filter = ('partner' , 'job','current_City')	
 	search_fields = ['job__job_title' , 'partner__user__username']
 
 admin.site.register(Job , JobAdmin)
