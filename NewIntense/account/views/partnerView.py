@@ -15,7 +15,7 @@ class partnerReg(CreateView):
 
     def form_valid(self , form):
         user = form.save()
-        return redirect('account:login')
+        return redirect('account:loginp')
 
 def partnerUpdate(request):
     if request.method == 'POST':
