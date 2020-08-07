@@ -82,6 +82,11 @@
 </section>
 <section>
     <div class="search-job text-center">
+	 {% if messages%}
+        {% for m in messages %}
+         <h1 class="text-white"> {{m}}</h1>
+        {% endfor %}
+      {% else %}
         <div>
             <h1 class="text-center text-white">Find the best job near you</h1>
             <h4 class="text-center text-white"><span style="color:rgb(246, 250, 3)">1,00,000</span> active job vacancies to grab. </h4>
@@ -104,6 +109,7 @@
         <button type="submit" class="btn btn-primary " onclick="submitForm()"> Search</button>
       </form>
         </div>
+	    {% endif %}
         </div>
 </section>
 	<div class=" text-center">
