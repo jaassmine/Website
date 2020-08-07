@@ -93,6 +93,8 @@ def jobs(request):
 		jobArr = jobArr.filter(job_title__icontains = role_val)
 	elif city_val !='' and city_val is not None :
 		jobArr = jobArr.filter(job_loc__icontains = city_val) 
+	if not jobArr :
+		messages.error(request,'Currently there are 0 jobs')
 	context = {
 		'jobArr' : jobArr
 	}
@@ -163,6 +165,8 @@ def patcomm(request):
 		jobAr = jobAr.filter(job_title__icontains = role_val) 
 	elif city_val !='' and city_val is not None:
 		jobAr = jobAr.filter(job_loc__icontains = city_val) 
+	if not jobAr :
+		messages.error(request,'Currently there are 0 jobs')
 	context = {
 		'jobAr' : jobAr
 	}
