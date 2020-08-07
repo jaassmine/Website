@@ -48,18 +48,15 @@
             <div class="form-group">
             <select class="form-control" id="sel1" name="role">
                 <option disabled selected>Job Role</option>
-                <option>Devops</option>
-                <option>Front-end Developer</option>
-                <option>BPO</option>
-                <option>Sales Management</option>
-                <option>Back End Developers</option>
+             	{% for comm in jobAr1 %}
+                <option>{{comm.job_title}}</option>
+                {% endfor %}
             </select>
             <select class="form-control" id="sel1" name="city">
                 <option disabled selected>City</option>
-                <option>Delhi</option> 
-                <option>Pune</option>
-                <option>Hyderabad</option>
-                <option>Chennai</option>
+                {% for comm in jobAr2 %}
+                <option>{{comm.job_loc}}</option>
+                {% endfor %}
             </select>
             <!-- <select class="form-control" id="sel1" name="district">
                 <option disabled selected>District</option>
