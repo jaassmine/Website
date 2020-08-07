@@ -86,6 +86,8 @@ def contact(request):
 @login_required(login_url= 'account:login')
 def jobs(request):
 	jobArr= Job.objects.all()
+	jobArr1=Job.objects.order_by().values('job_title').distinct()
+	jobArr2=Job.objects.order_by().values('job_loc').distinct()
 	role_val = request.GET.get('role')
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
@@ -96,7 +98,9 @@ def jobs(request):
 	if not jobArr :
 		messages.error(request,'Currently there are 0 jobs')
 	context = {
-		'jobArr' : jobArr
+		'jobArr' : jobArr,
+		'jobArr1' : jobArr1,
+		'jobArr2' : jobArr2
 	}
 	return render(request= request, 
 				  template_name = "jobs.html",
