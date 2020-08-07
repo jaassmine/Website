@@ -172,7 +172,7 @@ def applyp(request,pk):
 def patcomm(request):
 	jobAr= Commission.objects.all()
 	page = request.GET.get('page', 1)
-	paginator = Paginator(jobAr, 18)
+	paginator = Paginator(jobAr, 6)
 	try:
 		jjob = paginator.page(page)
 	except PageNotAnInteger:
