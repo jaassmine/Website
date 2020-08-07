@@ -162,6 +162,8 @@ def applyp(request,pk):
 @login_required(login_url='account:loginp')
 def patcomm(request):
 	jobAr= Commission.objects.all()
+	jobAr1=Commission.objects.order_by().values('job_title').distinct()
+	jobAr2=Commission.objects.order_by().values('job_loc').distinct()
 	role_val = request.GET.get('role')
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
@@ -172,7 +174,9 @@ def patcomm(request):
 	if not jobAr :
 		messages.error(request,'Currently there are 0 jobs')
 	context = {
-		'jobAr' : jobAr
+		'jobAr' : jobAr,
+		'jobAr1' : jobAr1,
+		'jobAr2' : jobAr2
 	}
 
 	return render(request = request,
