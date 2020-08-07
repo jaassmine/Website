@@ -65,9 +65,19 @@ def candapply(request):
     # jobs = Apply.objects.filter(candidate =request.user.id)
     job_id = applicant.values("job")
     jobs = Job.objects.filter(id__in = job_id).values() 
+    page = request.GET.get('page', 1)
+	paginator = Paginator(jobs, 18)
+	try:
+		jjob = paginator.page(page)
+	except PageNotAnInteger:
+		jjob = paginator.page(1)
+	except EmptyPage:
+		jjob = paginator.page(paginator.num_pages)
     if not jobs :
         messages.error(request,'You have 0 Applications')
-    context = { 'jobs' :jobs }
+    context = { 'jobs' :jobs ,
+                'jjob' :jjob
+              }
     return render(request = request , template_name = 'cand_apply.html' , context = context)
 
 
@@ -92,10 +102,18 @@ def patapply(request):
        # 'applicant': applicant
     #}
     applicant = ApplyP.objects.filter(partner = partnerJ).select_related('job')
+    page = request.GET.get('page', 1)
+	paginator = Paginator(applicant, 18)
+	try:
+		jjob = paginator.page(page)
+	except PageNotAnInteger:
+		jjob = paginator.page(1)
+	except EmptyPage:
+		jjob = paginator.page(paginator.num_pages)
     if not applicant :
         messages.error(request,'You have 0 Applications')
     context = { 
-       # 'jobs' :jobs ,
+        'jjob' :jjob ,
         'applicant': applicant
     }
     return render(request = request , template_name = 'pat_apply.html',context=context)

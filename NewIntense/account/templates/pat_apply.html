@@ -38,13 +38,17 @@
           </nav>
     </div>
 </section>
-<div class=" search-job text-white text-center">
+<div class="search-job text-white text-center">
+  {% if messages%}
   {% for m in messages %}
    <h1 > {{m}}</h1>
   {% endfor %}
+  {% else %}
+  <h1>Your Applications</h1>
+  {% endif %}
 </div>
 <div class="Job_container">
-{% for appl  in applicant %}
+{% for appl  in jjob %}
 <div class="card  text-center Job_item">
     <div class="card-header">
         <ul class="nav nav-pills card-header-pills">
@@ -93,6 +97,30 @@
     </div>
 </div>
 {% endfor %}   
+	<div style="float: right;" >
+    {% if jjob.has_other_pages %}
+  <ul class="pagination pagelink text-center">
+    {% if jjob.has_previous %}
+      <li><a href="?page={{ jjob.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled" ><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in jjob.paginator.page_range %}
+      {% if jjob.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if jjob.has_next %}
+      <li><a href="?page={{ jjob.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
+<br>
 </div>
 <footer class="page-footer font-small pt-4 pl-md-5">
     <div class="container-fluid text-center text-md-left">
