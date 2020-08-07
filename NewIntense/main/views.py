@@ -86,6 +86,8 @@ def contact(request):
 @login_required(login_url= 'account:login')
 def jobs(request):
 	jobArr= Job.objects.all()
+	jobArr1=Job.objects.order_by().values('job_title').distinct()
+	jobArr2=Job.objects.order_by().values('job_loc').distinct()
 	role_val = request.GET.get('role')
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
@@ -93,8 +95,12 @@ def jobs(request):
 		jobArr = jobArr.filter(job_title__icontains = role_val)
 	elif city_val !='' and city_val is not None :
 		jobArr = jobArr.filter(job_loc__icontains = city_val) 
+	if not jobArr :
+		messages.error(request,'Currently there are 0 jobs')
 	context = {
-		'jobArr' : jobArr
+		'jobArr' : jobArr,
+		'jobArr1' : jobArr1,
+		'jobArr2' : jobArr2
 	}
 	return render(request= request, 
 				  template_name = "jobs.html",
@@ -156,6 +162,8 @@ def applyp(request,pk):
 @login_required(login_url='account:loginp')
 def patcomm(request):
 	jobAr= Commission.objects.all()
+	jobAr1=Commission.objects.order_by().values('job_title').distinct()
+	jobAr2=Commission.objects.order_by().values('job_loc').distinct()
 	role_val = request.GET.get('role')
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
@@ -163,8 +171,12 @@ def patcomm(request):
 		jobAr = jobAr.filter(job_title__icontains = role_val) 
 	elif city_val !='' and city_val is not None:
 		jobAr = jobAr.filter(job_loc__icontains = city_val) 
+	if not jobAr :
+		messages.error(request,'Currently there are 0 jobs')
 	context = {
-		'jobAr' : jobAr
+		'jobAr' : jobAr,
+		'jobAr1' : jobAr1,
+		'jobAr2' : jobAr2
 	}
 
 	return render(request = request,

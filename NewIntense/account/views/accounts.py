@@ -65,6 +65,8 @@ def candapply(request):
     # jobs = Apply.objects.filter(candidate =request.user.id)
     job_id = applicant.values("job")
     jobs = Job.objects.filter(id__in = job_id).values() 
+    if not jobs :
+        messages.error(request,'You have 0 Applications')
     context = { 'jobs' :jobs }
     return render(request = request , template_name = 'cand_apply.html' , context = context)
 
@@ -90,6 +92,8 @@ def patapply(request):
        # 'applicant': applicant
     #}
     applicant = ApplyP.objects.filter(partner = partnerJ).select_related('job')
+    if not applicant :
+        messages.error(request,'You have 0 Applications')
     context = { 
        # 'jobs' :jobs ,
         'applicant': applicant
