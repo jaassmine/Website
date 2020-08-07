@@ -39,6 +39,11 @@
           </nav>
     </div>
 </section>
+<div class="text-center">
+  {% for m in messages %}
+   <h1 style="color: rgb(0, 247, 164);"> {{m}}</h1>
+  {% endfor %}
+</div>
 <div class="Job_container">
 {% for job in jobs %}
 <div class="card  text-center Job_item">
