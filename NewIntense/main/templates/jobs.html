@@ -90,19 +90,17 @@
         <div class="form-group">
         <select class="form-control" id="sel1" name="role">
             <option disabled selected>Job Role</option>
-            <option>Web Developer</option>
-            <option>Front-end Developer</option>
-            <option>BPO</option>
-            <option>Accountant</option>
-            <option>Back End Developers</option>
+            {% for job in jobArr1 %}
+            <option>{{job.job_title}}</option>
+            {% endfor %}
         </select>
         <select class="form-control" id="sel1" name="city">
             <option disabled selected>City</option>
-            <option>Delhi</option> 
-            <option>Pune</option>
-            <option>Hyderabad</option>
-            <option>Chennai</option>
+            {% for job in jobArr2 %}
+            <option>{{job.job_loc}}</option>
+            {% endfor %}
         </select>
+        
         <button type="submit" class="btn btn-primary " onclick="submitForm()"> Search</button>
       </form>
         </div>
