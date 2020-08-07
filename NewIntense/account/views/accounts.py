@@ -90,6 +90,8 @@ def patapply(request):
        # 'applicant': applicant
     #}
     applicant = ApplyP.objects.filter(partner = partnerJ).select_related('job')
+    if not applicant :
+        messages.error(request,'You have 0 Applications')
     context = { 
        # 'jobs' :jobs ,
         'applicant': applicant
