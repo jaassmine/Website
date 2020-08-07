@@ -86,6 +86,14 @@ def contact(request):
 @login_required(login_url= 'account:login')
 def jobs(request):
 	jobArr= Job.objects.all()
+	page = request.GET.get('page', 1)
+	paginator = Paginator(jobArr, 18)
+	try:
+		jjob = paginator.page(page)
+	except PageNotAnInteger:
+		jjob = paginator.page(1)
+	except EmptyPage:
+		jjob = paginator.page(paginator.num_pages)
 	jobArr1=Job.objects.order_by().values('job_title').distinct()
 	jobArr2=Job.objects.order_by().values('job_loc').distinct()
 	role_val = request.GET.get('role')
@@ -100,7 +108,8 @@ def jobs(request):
 	context = {
 		'jobArr' : jobArr,
 		'jobArr1' : jobArr1,
-		'jobArr2' : jobArr2
+		'jobArr2' : jobArr2,
+		'jjob' : jjob
 	}
 	return render(request= request, 
 				  template_name = "jobs.html",
@@ -162,6 +171,14 @@ def applyp(request,pk):
 @login_required(login_url='account:loginp')
 def patcomm(request):
 	jobAr= Commission.objects.all()
+	page = request.GET.get('page', 1)
+	paginator = Paginator(jobAr, 18)
+	try:
+		jjob = paginator.page(page)
+	except PageNotAnInteger:
+		jjob = paginator.page(1)
+	except EmptyPage:
+		jjob = paginator.page(paginator.num_pages)
 	jobAr1=Commission.objects.order_by().values('job_title').distinct()
 	jobAr2=Commission.objects.order_by().values('job_loc').distinct()
 	role_val = request.GET.get('role')
@@ -176,7 +193,8 @@ def patcomm(request):
 	context = {
 		'jobAr' : jobAr,
 		'jobAr1' : jobAr1,
-		'jobAr2' : jobAr2
+		'jobAr2' : jobAr2,
+		'jjob' : jjob
 	}
 
 	return render(request = request,
