@@ -4,14 +4,21 @@ from phonenumber_field.modelfields import PhoneNumberField
 from account.models import User , Candidate,Partner
 
 # Create your models here.
+GND_CHOICES = (
+   ('M', 'Male'),
+   ('F', 'Female')
+)
 class Job(models.Model):
 	candidates = models.ForeignKey(Candidate , null = True , on_delete= models.SET_NULL)
 	job_title =  models.CharField(max_length = 50)
 	job_company = models.CharField(max_length = 100 , null = True)
 	job_des = models.TextField()
 	job_sal = models.IntegerField()
-	job_loc = models.CharField(max_length = 50)
-
+	job_loc = models.CharField(max_length = 500)
+	gender=models.CharField(max_length = 100)
+	timing=models.CharField(max_length = 500)
+	qualification=models.CharField(max_length = 500)
+	city = models.CharField(max_length = 50)
 	def __str__(self):
 		return self.job_title
 
@@ -30,6 +37,7 @@ class Apply(models.Model):
 	job = models.ForeignKey(Job, null=True, on_delete=models.SET_NULL)
 	name=models.CharField(max_length=100)
 	contact_Number=PhoneNumberField()
+	gender = models.CharField(choices=GND_CHOICES, max_length=128,null=True)
 	email=models.EmailField()
 	current_City=models.CharField(max_length=200)
 	upload_Resume=models.FileField(upload_to='documents/')
@@ -57,7 +65,8 @@ class Commission(models.Model):
 	partners = models.ForeignKey(Partner , null = True , on_delete= models.SET_NULL)
 	job_title =  models.CharField(max_length = 100)
 	company_title =  models.CharField(max_length = 100)
-	job_loc = models.CharField(max_length = 50)
+	job_loc = models.CharField(max_length = 500)
+	city = models.CharField(max_length = 50)
 	job_sal = models.CharField(max_length = 500)
 	job_exp=models.CharField(max_length = 100)
 	job_des = models.TextField()
@@ -75,6 +84,7 @@ class ApplyP(models.Model):
 	job = models.ForeignKey(Commission, null=True, on_delete=models.SET_NULL)
 	name=models.CharField(max_length=100)
 	contact_Number=PhoneNumberField()
+	gender = models.CharField(choices=GND_CHOICES, max_length=128,null=True)
 	email=models.EmailField()
 	current_City=models.CharField(max_length=200)
 	upload_Resume=models.FileField(upload_to='documents/')
