@@ -88,7 +88,8 @@
     </section>
     <br>
     <div class="search-job text-center text-white">
-      <h3> Register Yourself As a Partner with us</h3>
+      <h3> Already Registered?<a  href ="{% url 'account:loginp' %}" class="  text-white"> Click Here To Login </a>
+       <br> Or <br> Register Yourself As a Partner with us</h3>
     </div>
     <br>
     <div class="container">
@@ -96,7 +97,7 @@
             {% csrf_token %}
             {{ form|crispy }}
             <button class ="btn btn-primary" type="submit"> Submit </button>
-            <a style="float: right;" href ="{% url 'account:login' %}" class=" btn btn-primary text-white"> login </a>
+            <a style="float: right;" href ="{% url 'account:loginp' %}" class=" btn btn-primary text-white"> Login </a>
     
         </form>
       </div>

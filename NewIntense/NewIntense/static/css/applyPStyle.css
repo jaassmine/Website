@@ -43,7 +43,7 @@ border: none;
 
 .banner
 {
-    height:100vh;
+    height:130vh;
 	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/static/img/appl.jpg");
 	background-size: cover;
 	background-position: center;
