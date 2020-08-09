@@ -102,7 +102,7 @@
         <select class="form-control" id="sel1" name="city">
             <option disabled selected>City</option>
             {% for job in jobArr2 %}
-            <option>{{job.job_loc}}</option>
+            <option>{{job.city}}</option>
             {% endfor %}
         </select>
         
@@ -123,8 +123,12 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title job-title"><b>{{job.job_title}}</b></h4>
-                       <h5>{{ job.job_company }}</h5>
-                        <p class="card-text">  {{job.job_des}} <br>
+                       <h5><i class="fas fa-building text-muted"></i>{{ job.job_company }}</h5>
+                        <p class="card-text"> 
+                          <i class="fas fa-user text-muted"></i>{{job.gender}}<br>
+                          <i class="fas fa-pen text-muted"></i> {{job.job_des}} <br>
+                          <i class="fas fa-clock text-muted"></i>{{job.timing}}<br>
+                            <i class="fas fa-graduation-cap text-muted"></i>{{job.qualification}}<br>
                             <i class="fas fa-rupee-sign text-muted"></i> {{job.job_sal}} <br>
                             <i class="fas fa-map-marked-alt text-muted"></i> {{job.job_loc}}<br>
                         </p>
