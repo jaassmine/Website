@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from ..decorators import unauthenticated_user
 from ..models import Candidate,Partner
 from main.models import Apply , Job, Commission,ApplyP
+from django.core.paginator import Page,Paginator,PageNotAnInteger,EmptyPage
 
 # def home(request):
 #     # if request.user.is_authenticated:
