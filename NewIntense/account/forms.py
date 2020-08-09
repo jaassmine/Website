@@ -5,7 +5,10 @@ from django.forms.utils import ValidationError
 from account.models import User , Candidate , Partner
 from django.core.validators import RegexValidator
 
-
+GND_CHOICES=(
+    ('M','Male'),
+    ('F','Female')
+)
 ORG_CHOICES = (
    ('PA', 'Placement Agency'),
    ('FR', 'Freelancer'),
@@ -23,6 +26,7 @@ class candidateRegForm(UserCreationForm):
     last_name = forms.CharField(required =True)
     email = forms.EmailField(required =True)
     phone_no = forms.CharField(required = True,validators=[numeric])
+    gender = forms.ChoiceField(choices=GND_CHOICES, widget=forms.RadioSelect())
     father_name = forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
     education = forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
     PAN_number = forms.CharField(required =False,validators=[numeric])
@@ -118,6 +122,7 @@ class EditCandidateProfile(forms.ModelForm):
             'father_name',
             'education',
             'phone_no',
+            'gender',
             'PAN_number',
             'Aadhar_number',
             'location',
