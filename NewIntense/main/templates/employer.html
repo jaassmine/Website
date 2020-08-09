@@ -114,6 +114,9 @@
     <div class="row p-2 justify-content-center">
         <div class="col-4" class="bg-dark" >
             <div><h5 class="text-center">Buisness Query</h5></div>
+            {% for m in messages %}
+                    <h5 class="text-center" style="color: rgb(0, 183, 255); border:solid rgb(11, 247, 11);">{{m}}</h5>
+            {% endfor %}
             <!-- <div class="row p-2 justify-content-center">
               <div class="col-4" class="bg-dark" >
                   <div><h3 ><b>Buisness Query</b></h3></div> -->
