@@ -16,7 +16,7 @@ class ContactForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Apply
-        fields = ('name','email','contact_Number','current_City','upload_Resume')
+        fields = ('name','email','contact_Number','gender','current_City','upload_Resume')
         widgets={
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control' }),
@@ -28,7 +28,7 @@ class ApplicationForm(forms.ModelForm):
 class ApplicationFormP(forms.ModelForm):
     class Meta:
         model = ApplyP
-        fields = ('name','email','contact_Number','current_City','upload_Resume')
+        fields = ('name','email','contact_Number','gender','current_City','upload_Resume')
         widgets={
             # 'candidate': forms.TextInput(attrs={'class': 'form-control'}),
             # 'job': forms.TextInput(attrs={'class': 'form-control'}),

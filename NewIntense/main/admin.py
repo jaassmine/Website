@@ -14,10 +14,14 @@ class JobAdmin(admin.ModelAdmin):
 				"job_des",
 				"job_company",
 				"job_sal", 
-				"job_loc"
+				"job_loc",
+				"city",
+				"gender",
+				"timing",
+				"qualification"
 				]
-	list_display = ('job_title' , 'job_company' ,'job_sal' , 'job_loc' )
-	list_filter = ('job_company' , 'job_title','job_loc')
+	list_display = ('job_title' , 'job_company' ,'job_sal' , 'job_loc' ,'city')
+	list_filter = ('job_company' , 'job_title','job_loc','city')
 
 class CommissionAdmin(admin.ModelAdmin):
 	fields = [
@@ -26,6 +30,7 @@ class CommissionAdmin(admin.ModelAdmin):
 				"job_des",
 				"job_sal", 
 				"job_loc",
+				"city",
 				"job_exp",
 				"age",
 				"gender",
@@ -34,12 +39,12 @@ class CommissionAdmin(admin.ModelAdmin):
 				"g_period"
 				]
 	list_display = ('job_title' , 'company_title' ,'job_sal' , 'job_loc' )
-	list_filter = ('company_title' , 'job_title','job_loc')	
+	list_filter = ('company_title' , 'job_title','job_loc','city')	
 
 class ApplyAdmin(admin.ModelAdmin):
 
-	list_display = ('candidate' , 'job', 'name' ,'email')
-	list_filter = ('candidate' , 'job','current_City')	
+	list_display = ('candidate' , 'job', 'name' ,'email','contact_Number')
+	list_filter = ('candidate' , 'job','current_City','gender')	
 	search_fields = ['job__job_title' , 'candidate__user__username']
 
 class EnquiryAdmin(admin.ModelAdmin):
@@ -49,8 +54,8 @@ class EnquiryAdmin(admin.ModelAdmin):
 
 class ApplyPAdmin(admin.ModelAdmin):
 
-	list_display = ('partner' , 'job', 'name' ,'email')
-	list_filter = ('partner' , 'job','current_City')	
+	list_display = ('partner' , 'job', 'name' ,'email',,'contact_Number')
+	list_filter = ('partner' , 'job','current_City','gender')	
 	search_fields = ['job__job_title' , 'partner__user__username']
 
 admin.site.register(Job , JobAdmin)
