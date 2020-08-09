@@ -3,6 +3,10 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.html import escape, mark_safe
 
+GND_CHOICES = (
+   ('M', 'Male'),
+   ('F', 'Female')
+)
 ORG_CHOICES = (
    ('PA', 'Placement Agency'),
    ('FR', 'Freelancer'),
@@ -23,6 +27,7 @@ class Candidate(models.Model):
     # last_name=models.CharField(max_length=20)
     # email=models.EmailField()
     phone_no = models.CharField(max_length = 10)
+    gender = models.CharField(choices=GND_CHOICES, max_length=128,null=True)
     father_name=models.CharField(max_length=50)
     education=models.CharField(max_length=100)
     PAN_number=models.CharField(max_length=10)
