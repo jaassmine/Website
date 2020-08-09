@@ -101,9 +101,9 @@ def jobs(request):
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
 	if role_val !='' and role_val is not None :
-		jobArr = jobArr.filter(job_title__icontains = role_val)
+		jjob = jobArr.filter(job_title__icontains = role_val)
 	elif city_val !='' and city_val is not None :
-		jobArr = jobArr.filter(job_loc__icontains = city_val) 
+		jjob = jobArr.filter(job_loc__icontains = city_val) 
 	if not jobArr :
 		messages.error(request,'Currently there are 0 jobs')
 	context = {
@@ -186,9 +186,9 @@ def patcomm(request):
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
 	if role_val !='' and role_val is not None:
-		jobAr = jobAr.filter(job_title__icontains = role_val) 
+		jjobAr = jobAr.filter(job_title__icontains = role_val) 
 	elif city_val !='' and city_val is not None:
-		jobAr = jobAr.filter(job_loc__icontains = city_val) 
+		jjob = jobAr.filter(job_loc__icontains = city_val) 
 	if not jobAr :
 		messages.error(request,'Currently there are 0 jobs')
 	context = {
