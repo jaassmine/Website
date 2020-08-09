@@ -51,6 +51,9 @@ def employer(request):
 		form = EnquiryForm(request.POST)
 		if form.is_valid():
 			form.save()
+			messages.info(request,'Data Submitted Successfully') 
+		else :
+			messages.error(request,'Enter Correct Data') 
 
 	form = EnquiryForm()
 	return render(request,'employer.html',{'form':form} )
@@ -76,6 +79,9 @@ def contact(request):
 		form = ContactForm(request.POST)
 		if form.is_valid():
 			form.save()
+			messages.info(request,'Data Submitted Successfully') 
+		else :
+			messages.error(request,'Enter Correct Data') 
 
 	form = ContactForm()
 	return render(request,'contact.html',{'form':form} )
@@ -96,14 +102,14 @@ def jobs(request):
 	except EmptyPage:
 		jjob = paginator.page(paginator.num_pages)
 	jobArr1=Job.objects.order_by().values('job_title').distinct()
-	jobArr2=Job.objects.order_by().values('job_loc').distinct()
+	jobArr2=Job.objects.order_by().values('city').distinct()
 	role_val = request.GET.get('role')
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
 	if role_val !='' and role_val is not None :
-		jobArr = jobArr.filter(job_title__icontains = role_val)
+		jjob = jobArr.filter(job_title__icontains = role_val)
 	elif city_val !='' and city_val is not None :
-		jobArr = jobArr.filter(job_loc__icontains = city_val) 
+		jjob = jobArr.filter(city__icontains = city_val) 
 	if not jobArr :
 		messages.error(request,'Currently there are 0 jobs')
 	context = {
@@ -137,8 +143,8 @@ def apply(request,pk):
 				post.save()
 				messages.success(request,' You have applied  successfully for this job')
 				# form.save()
-			else:
-				print("wRONG Data")
+			 else :
+				messages.error(request,'Enter Correct Data') 
 
 	form = ApplicationForm()
 	return render(request,'apply.html',{'form':form} )
@@ -163,8 +169,8 @@ def applyp(request,pk):
 			post.save()
 			messages.success(request,' You have applied  successfully for this job')
 			# form.save()
-		else:
-			print("wRONG Data")
+		else :
+			messages.error(request,'Enter Correct Data') 
 
 	form = ApplicationFormP()
 	return render(request,'applp.html',{'form':form} )
@@ -181,14 +187,14 @@ def patcomm(request):
 	except EmptyPage:
 		jjob = paginator.page(paginator.num_pages)
 	jobAr1=Commission.objects.order_by().values('job_title').distinct()
-	jobAr2=Commission.objects.order_by().values('job_loc').distinct()
+	jobAr2=Commission.objects.order_by().values('city').distinct()
 	role_val = request.GET.get('role')
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
 	if role_val !='' and role_val is not None:
-		jobAr = jobAr.filter(job_title__icontains = role_val) 
+		jjob = jobAr.filter(job_title__icontains = role_val) 
 	elif city_val !='' and city_val is not None:
-		jobAr = jobAr.filter(job_loc__icontains = city_val) 
+		jjob = jobAr.filter(city__icontains = city_val) 
 	if not jobAr :
 		messages.error(request,'Currently there are 0 jobs')
 	context = {
