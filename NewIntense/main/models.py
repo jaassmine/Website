@@ -20,7 +20,7 @@ class Job(models.Model):
 	qualification=models.CharField(max_length = 500)
 	city = models.CharField(max_length = 50)
 	def __str__(self):
-		return self.job_title
+		return self.job_company
 
 class Contact(models.Model):
 	name=models.CharField(max_length=100)
@@ -77,7 +77,7 @@ class Commission(models.Model):
 	g_period=models.CharField(max_length = 500)
 
 	def __str__(self):
-		return self.job_title
+		return self.company_title
 
 class ApplyP(models.Model):
 	partner = models.ForeignKey(Partner, null= True , on_delete= models.SET_NULL)
