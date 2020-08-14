@@ -113,13 +113,13 @@
                                      <input class="btn login_btn" type="submit" value="Login">
                                    </div>
                                    <br>
-                                   <h6 d="form-title" class="text-center text-white"> <a href="{% url 'reset_password' %}">Forgot Password</a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'account:partnerReg' %}">Register</a>
+                                   <h6 d="form-title" class="text-center "> <a class="text-white" href="{% url 'reset_password' %}">Forgot Password</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; <a class="text-white" href="{% url 'account:partnerReg' %}">Register</a>
                                 </h6>
                         </form>
                     </div>
                     {% for message in messages %}
-                        <p id='message'>{{message}}</p>
+                        <p class="text-white" id='message'>{{message}}</p>
                     {% endfor %}
                 </div>
             </div>
