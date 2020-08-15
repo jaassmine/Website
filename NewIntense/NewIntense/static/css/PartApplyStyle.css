@@ -35,6 +35,12 @@ border: none;
 
 }
 
+.navbar img{
+    margin-left: 0.6em;
+    height: 3em;
+    /* border-radius: 40%; */
+}
+
 .font-20{
     font-size: 20px;
 }
@@ -63,11 +69,7 @@ border: none;
 	margin: 5px;
 	padding: 5px 20px;
 }
-img{
-	max-height: 6%;
-	max-width: 6%;
 
-}
 
 
 .card-deck

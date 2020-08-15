@@ -51,7 +51,6 @@ class ApplicationForm(forms.ModelForm):
 class ApplicationFormP(forms.ModelForm):
     name=forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
     contact_Number=PhoneNumberField()
-    gender = forms.CharField(label='Gender',widget=forms.Select(choices=GND_CHOICES))
     email=forms.EmailField(required =True)
     current_City=forms.CharField(required =True)
     class Meta:

@@ -39,7 +39,6 @@ border: none;
 .navbar img{
     margin-left: 0.6em;
     height: 3em;
-    overflow: hidden !important;
     /* border-radius: 40%; */
 }
 

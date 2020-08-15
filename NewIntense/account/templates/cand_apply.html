@@ -4,7 +4,7 @@
 <head>
     <title>intense placement</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/canapplyStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/candidateApplyStyle.css' %}">
 
     <link rel="stylesheet" href="{% static 'styles/bootstrap-4.5.0/css/bootstrap.css' %}">
     <link href="{% static 'plugins/fontawesome-free-5.13.0-web/css/fontawesome.css' %}" rel="stylesheet">
@@ -19,9 +19,9 @@
 <section id="header">
     <div class="menu-bar">
         <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand" href="#">
-              <img src="{% static 'img/ipLogo.png' %}">
-            </a>
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'img/ipLogo.png' %}">
+          </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,7 +31,7 @@
                         <a class="nav-link " href="{% url 'account:candidate_dash' %}">{{user.username}}</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link " href="{% url 'account:logout' %}">logout</a>
+                        <a class="nav-link " href="{% url 'account:logout' %}">Logout</a>
                         </li>
                     </li>
                 </ul>

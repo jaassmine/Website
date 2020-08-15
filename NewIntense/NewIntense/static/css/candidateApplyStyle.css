@@ -1,0 +1,224 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+body
+{
+	overflow-x:hidden; 	
+}
+.menu-bar
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+	
+}
+
+.nav-link
+{
+font-size: 16px;
+color: #ffffff !important;
+margin:2px;
+}
+
+.nav-link
+{
+font-size: 16px;
+color: #ffffff !important;
+margin:2px;
+}
+
+.navbar-nav{
+    text-align: right;
+}
+
+.menu-bar .navbar-toggler
+{
+padding-right: 0;
+outline: none;
+border: none;
+}
+
+.navbar-nav a:hover {
+  background-color:#6db9ef;
+
+}
+
+.navbar img{
+    margin-left: 0.6em;
+    height: 3em;
+}
+
+.font-20{
+    font-size: 20px;
+}
+
+.search-job
+{
+	padding: 50px 0;
+    margin:  50px 10% 50px;
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+	border-radius: 30px;
+}
+
+.search-job .form-control{
+	max-width: 250px;
+	display: inline-flex;
+	margin: 10px 5px;
+	border-radius: 0;
+	box-shadow: none !important;
+    border: none !important;
+}
+
+.search-job .btn-primary{
+	border-radius: 0;
+	box-shadow: none !important;
+	display: inline-flex;
+	margin: 5px;
+	padding: 5px 20px;
+}
+
+
+
+.card-deck
+{
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-bottom: 3%;
+}
+
+.card
+{
+    display: inline-block;
+    max-width: 25rem;
+}
+.card-footer .btn
+{
+    float: center;
+}
+
+.btn:hover
+{
+    background-color:#6db9ef;
+}
+
+.pagelink li{
+    height:25px ;
+    width: 25px;
+    list-style: none;
+    display: inline-block;
+    cursor: pointer; 
+}
+.pagelink li:hover,.active{
+    color: #fff;
+    background-image: linear-gradient(to right,rgb(9, 28, 80),#6db9ef); 
+      
+}
+
+.left-arrow{
+    color: rgb(97, 198, 216);
+}
+.right-arrow{
+    color:rgb(30, 136, 223);
+}
+
+ /* @media only screen and (min-width: 300px) and (max-width : 800px){
+    .container .company-details{
+        width: 30%;
+        float:center;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width : 1000px){
+    .container .company-details{
+        width: 50%;
+    }
+}  */
+ 
+
+@media (max-width: 475.98px) { 
+    .container {
+        width: 150%;
+    }
+ }
+
+@media (max-width: 767.98px) {
+    .container .company-details{
+        width: auto;
+    }
+    .Job_item{
+        width: 100% !important;
+    }
+ }
+
+@media (max-width: 991.98px) {
+    .container .company-details{
+        width: auto;
+    }
+ }
+
+@media (max-width: 1199.98px) { 
+    .container .company-details{
+        width: auto;
+    }
+ }
+ @media all and (max-width :1200 )
+ {
+     .container
+     {
+         width:1000px;
+     }
+
+     .Job_item{
+         width: auto;
+        
+     }
+ }
+
+.foot
+{
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+color: #ffffff;
+}
+
+.Job_cont
+{
+    width: 100%;
+	background: #FFFFFF;
+	padding-top: 115px;
+	padding-bottom: 116px;
+}
+
+.Job_container
+{
+    width: calc(100% + 30px);
+    left: -15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    
+}
+.Job_item
+{
+    display: inline-block;
+	width: calc(100% / 3);
+	padding-left: 15px;
+	padding-right: 15px;
+    margin-bottom: 33px;
+}
+
+footer
+{   margin-top: 10px;
+    background-image: linear-gradient(to right,#6db9ef,#7ce08a);
+    color: #ffffff;
+
+}
+footer ul li a {
+	color: rgb(252, 250, 250);
+}
+
+footer p 
+{
+    font-weight: normal;
+}
+
