@@ -113,86 +113,88 @@
                                      <input class="btn login_btn" type="submit" value="Login">
                                    </div>
                                    <br>
-                                   <h6 d="form-title" class="text-center text-white"> <a href="{% url 'reset_password' %}">Forgot Password</a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'account:candidateReg' %}">Register</a>
+                                   <h6 d="form-title" class="text-center text-white"> <a class="text-white" href="{% url 'reset_password' %}">Forgot Password</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; <a class="text-white" href="{% url 'account:candidateReg' %}">Register</a>
                                 </h6>
                                 
                         </form>
                     </div>
                     {% for message in messages %}
-                        <p id='message'>{{message}}</p>
+                        <p class="text-white" id='message'>{{message}}</p>
                     {% endfor %}
                 </div>
             </div>
         </div>
         <footer class="page-footer font-small pt-4 pl-md-5">
-            <div class="container-fluid text-center text-md-left">
-              <div class="row">
-                <div class="col-md-4 mt-md-0 mt-4 text-left" >
-                  <h5 class="text-uppercase" id="desc">Intense Placement</h5>
-                  <p id = "desc">Our Comapny provides you hastle free recruting and save candidates from being cheated .Our main motto is to save each and every candidate from being cheated by fraud consultants or recruiters who asks money before getting the job. </p>
-                </div>
-                <!-- <hr class="clearfix w-100 d-md-none pb-3"> -->
-                <div class="col-md-4 d-none d-lg-block d-xl-block text-center" >
-                  <h5 class="text-uppercase">Quick Links</h5>
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="/contact/">Contact us</a>
-                    </li>
-                    <li>
-                      <a href="/about/">About us</a>
-                    </li>
-                    <li>
-                      <a href="/faq/">FAQs</a>
-                    </li>
-                    <li>
-                      <a href="#!">Terms of use</a>
-                    </li>
-                  </ul>
-                </div> 
-                <div class="col-3 col-md-4 pl-md-4 d-none d-lg-block d-xl-block text-left">
-                  <h5 class="text-uppercase">Intense Placement </h5>
-                 <!--  <p>Subscribe to kormosala Pacific newsletter to get thelatest jobs posted, candidates, and other latestnews stay update.</p>
-                  <form id = "subs">
-                    <div class="field">
-                        <div class="input-group">
-                            <input type="email" name="EMAIL" class="form-control" placeholder="Email Address...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-submit" type= "submit">
-                                    <i class="fa fa-envelope-o"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                  </form> -->
-                  <p id = "desc">Our Comapny is creating Entrepreneurs.Because of our portal we are connecting many of the Genuine Consultants , Recruiters or Freelancers to Big MNC's which previously they don't get empanel with,because of their major compliance issue . </p>
-                </div>
-              </div>
-            </div>
-            <div class="container " style="height: 100px;">
-                <div class="row">
-                    <div class="col-md-12 py-3">
-                    <h5 class= "pb-2 text-center">Follow Us</h5>
-                    <div class="mb-2 text-center">
-                      <a href = "https://www.facebook.com/Intense-Placement-Private-Limited-102928834808269/" class="fb-ic" style="color: rgb(255, 255, 255);">
-                        <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                      </a>
-                      <a href = "#" class="tw-ic" style="color:  rgb(255, 255, 255);">
-                        <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                      </a>
-                      <a href = "https://www.linkedin.com/company/intense-placement-private-limited" class="li-ic" style="color:  rgb(255, 255, 255);">
-                        <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                      </a>
-                      <a href = "https://www.instagram.com/invites/contact/?i=zmndwoirzzee&utm_content=hftfvyr" class="ins-ic" style="color:  rgb(255, 255, 255);">
-                        <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                      </a>
-                    </div>
-                  </div>
+    <div class="container-fluid text-center text-md-left">
+      <div class="row">
+        <div class="col-md-4 mt-md-0 mt-4 text-left" >
+          <h5 class="text-uppercase" id="desc">Intense Placement</h5>
+          <p id = "desc">Our Comapny provides you hastle free recruiting and save candidates from being cheated .Our main motto is to save each and every candidate from being cheated by fraud consultants or recruiters who asks money before getting the job. </p>
+        </div>
+        <!-- <hr class="clearfix w-100 d-md-none pb-3"> -->
+        <div class="col-md-4 d-none d-lg-block d-xl-block text-center" >
+          <h5 class="text-uppercase">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="{% url 'main:homepage' %}">Home</a>
+            </li>
+            <li>
+              <a href="/contact/">Contact us</a>
+            </li>
+            <li>
+              <a href="/about/">About us</a>
+            </li>
+            <li>
+              <a href="/faq/">FAQs</a>
+            </li>
+            
+          </ul>
+        </div> 
+        <div class="col-3 col-md-4 pl-md-4 d-none d-lg-block d-xl-block text-left">
+          <h5 class="text-uppercase">Intense Placement </h5>
+         <!--  <p>Subscribe to kormosala Pacific newsletter to get thelatest jobs posted, candidates, and other latestnews stay update.</p>
+          <form id = "subs">
+            <div class="field">
+                <div class="input-group">
+                    <input type="email" name="EMAIL" class="form-control" placeholder="Email Address...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-submit" type= "submit">
+                            <i class="fa fa-envelope-o"></i>
+                        </button>
+                    </span>
                 </div>
             </div>
-            <div class="footer-copyright text-center py-2">© 2020 Copyright:
-              <h6>Intense Placement</h6>
+          </form> -->
+          <p id = "desc">Our Comapny is creating Entrepreneurs.Because of our portal we are connecting many of the Genuine Consultants , Recruiters or Freelancers to Big MNC's which previously they don't get empanel with,because of their major compliance issue . </p>
+        </div>
+      </div>
+    </div>
+    <div class="container " style="height: 100px;">
+        <div class="row">
+            <div class="col-md-12 py-3">
+            <h5 class= "pb-2 text-center">Follow Us</h5>
+            <div class="mb-2 text-center">
+              <a href = "https://www.facebook.com/Intense-Placement-Private-Limited-102928834808269/" class="fb-ic" style="color: rgb(255, 255, 255);">
+                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+              <a href = "#" class="tw-ic" style="color:  rgb(255, 255, 255);">
+                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+              <a href = "https://www.linkedin.com/company/intense-placement-private-limited" class="li-ic" style="color:  rgb(255, 255, 255);">
+                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+              <a href = "https://www.instagram.com/invites/contact/?i=zmndwoirzzee&utm_content=hftfvyr" class="ins-ic" style="color:  rgb(255, 255, 255);">
+                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
             </div>
-        </footer>
+          </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-2">
+      <h6> <a href="mailto:devvarrior@gmail.com" class="text-white" style="float: left;"><i class="fas fa-code"></i> Website credits : Devvarrior <i class="fas fa-code"></i></a> <p style="float: right;">© 2020 Copyright:Intense Placement</p></h6>
+      <br>
+    </div>
+</footer>
     </body>
 </html>

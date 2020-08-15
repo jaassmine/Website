@@ -101,30 +101,68 @@
         <h1 class="text-center text-white">Find the best job near you</h1>
         <h4 class="text-center text-white"><span style="color:rgb(246, 250, 3)">1,00,000</span> active job vacancies to grab. </h4>
     </div>
+    {% if user.is_authenticated %}
+      {% if user.is_candidate %}
+        <form action="/jobs/" method="get" id ="findform">
+          <div class="form-group">
+          <select class="form-control" id="sel1" name="role">
+              <option disabled selected>Job Role</option>
+              {% for job in jobArr1 %}
+              <option>{{job.job_title}}</option>
+              {% endfor %}
+          </select>
+          <select class="form-control" id="sel1" name="city">
+              <option disabled selected>City</option>
+              {% for job in jobArr2 %}
+              <option>{{job.city}}</option>
+              {% endfor %}
+          </select>
+          
+          <button type="submit" class="btn btn-primary " onclick="submitForm()"> Search</button>
+        </form>
+      {% elif user.is_partner %}
+      <form action="/patcomm/" method="get" id ="findform">
+        <div class="form-group">
+        <select class="form-control" id="sel1" name="role">
+            <option disabled selected>Job Role</option>
+            {% for job in jobArr1 %}
+            <option>{{job.job_title}}</option>
+            {% endfor %}
+        </select>
+        <select class="form-control" id="sel1" name="city">
+            <option disabled selected>City</option>
+            {% for job in jobArr2 %}
+            <option>{{job.city}}</option>
+            {% endfor %}
+        </select>
+        
+        <button type="submit" class="btn btn-primary " onclick="submitForm()"> Search</button>
+      </form>
+    {% endif %}
+  {% else %}
     <form action="/jobs/" method="get" id ="findform">
-    <div class="form-group">
-    <select class="form-control" id="sel1" name="role">
-        <option disabled selected>Job Role</option>
-        <option>Devops</option>
-        <option>Front-end Developer</option>
-        <option>BPO</option>
-        <option>Sales Management</option>
-        <option>Back End Developers</option>
-    </select>
-    <select class="form-control" id="sel1" name="city">
-        <option disabled selected>City</option>
-        <option>Delhi</option> 
-        <option>Pune</option>
-        <option>Hyderabad</option>
-        <option>Chennai</option>
-        <option>Mumbai</option>
-    </select>
-    <button type="submit" class="btn btn-primary "> Search</button>
-    <!-- <a class="btn btn-primary text-white" href="jobs.html">Search</a> -->
-  </form>
-    </div>
-    </div>
+      <div class="form-group">
+      <select class="form-control" id="sel1" name="role">
+          <option disabled selected>Job Role</option>
+          {% for job in jobArr1 %}
+          <option>{{job.job_title}}</option>
+          {% endfor %}
+      </select>
+      <select class="form-control" id="sel1" name="city">
+          <option disabled selected>City</option>
+          {% for job in jobArr2 %}
+          <option>{{job.city}}</option>
+          {% endfor %}
+      </select>
+      
+      <button type="submit" class="btn btn-primary " onclick="submitForm()"> Search</button>
+    </form>
+  {% endif %}
+     
+ </div>
   
+</div>
+
 
   <section>
     <h2 class="text-center"><b>Top Job Roles</b></h2>
@@ -162,7 +200,16 @@
 	</div>
 	<div>
     <center>
+      {% if user.is_authenticated %}
+        {% if user.is_candidate %}
+          <a class="btn btn-primary text-white"  href="/jobs/">View Job Roles</a>
+        {% elif user.is_partner %}
+          <a class="btn btn-primary text-white"  href="/patcomm/">View Job Roles</a>
+        {% endif %}
+      {% else %}
       <a class="btn btn-primary text-white"  href="/jobs/">View Job Roles</a>
+
+      {% endif %}
     </center>
   </div>
 	</section> 
@@ -174,12 +221,15 @@
       <div class="row">
         <div class="col-md-4 mt-md-0 mt-4 text-left" >
           <h5 class="text-uppercase" id="desc">Intense Placement</h5>
-          <p id = "desc">Our Comapny provides you hastle free recruting and save candidates from being cheated .Our main motto is to save each and every candidate from being cheated by fraud consultants or recruiters who asks money before getting the job. </p>
+          <p id = "desc">Our Comapny provides you hastle free recruiting and save candidates from being cheated .Our main motto is to save each and every candidate from being cheated by fraud consultants or recruiters who asks money before getting the job. </p>
         </div>
         <!-- <hr class="clearfix w-100 d-md-none pb-3"> -->
         <div class="col-md-4 d-none d-lg-block d-xl-block text-center" >
           <h5 class="text-uppercase">Quick Links</h5>
           <ul class="list-unstyled">
+            <li>
+              <a href="{% url 'main:homepage' %}">Home</a>
+            </li>
             <li>
               <a href="/contact/">Contact us</a>
             </li>
@@ -189,9 +239,7 @@
             <li>
               <a href="/faq/">FAQs</a>
             </li>
-            <li>
-              <a href="#!">Terms of use</a>
-            </li>
+            
           </ul>
         </div> 
         <div class="col-3 col-md-4 pl-md-4 d-none d-lg-block d-xl-block text-left">
@@ -234,8 +282,9 @@
           </div>
         </div>
     </div>
-    <div class="footer-copyright text-center py-2">© 2020 Copyright:
-      <h6>Intense Placement</h6>
+    <div class="footer-copyright text-center py-2">
+      <h6> <a href="mailto:devvarrior@gmail.com" class="text-white" style="float: left;"><i class="fas fa-code"></i> Website credits : Devvarrior <i class="fas fa-code"></i></a> <p style="float: right;">© 2020 Copyright:Intense Placement</p></h6>
+      <br>
     </div>
 </footer>
 <script src="{% static  'js/homeJS.js' %}"></script>
