@@ -13,16 +13,6 @@ GND_CHOICES = (
 numeric = RegexValidator(r'^[0-9+]', 'Only digit characters.')
 
 class ContactForm(forms.ModelForm):
-    name=forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
-    mail=forms.EmailField(required =True)
-    contact_Number=PhoneNumberField()
-    message=forms.CharField(widget=forms.Textarea(
-                                        attrs={
-                                            'rows' : 4, 
-                                            'cols' : 23,
-                                            'class' : 'form-control'
-                                            }))
-
     class Meta:
         model = Contact
         fields = [
@@ -30,14 +20,15 @@ class ContactForm(forms.ModelForm):
             'mail',
             'contact_Number',
             'message']
+     def clean(self):
+        name=self.cleaned_data.get("name")
+        if (name.isdigit()) or (name.isalnum()):
+            raise forms.ValidationError("Name should not contain digit")
+
         
 
 class ApplicationForm(forms.ModelForm):
-    name=forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
-    contact_Number=PhoneNumberField()
-    email=forms.EmailField(required =True)
-    current_City=forms.CharField(required =True)
-    class Meta:
+        class Meta:
         model = Apply
         fields = [
             'name',
@@ -46,14 +37,15 @@ class ApplicationForm(forms.ModelForm):
             'gender',
             'current_City',
             'upload_Resume']
+       def clean(self):
+           name=self.cleaned_data.get("name")
+           if (name.isdigit()) or (name.isalnum()):
+               raise forms.ValidationError("Name should not contain digit")
+
     
         
 class ApplicationFormP(forms.ModelForm):
-    name=forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
-    contact_Number=PhoneNumberField()
-    email=forms.EmailField(required =True)
-    current_City=forms.CharField(required =True)
-    class Meta:
+        class Meta:
         model = ApplyP
         fields = [
             'name',
@@ -62,22 +54,15 @@ class ApplicationFormP(forms.ModelForm):
             'gender',
             'current_City',
             'upload_Resume']
+        def clean(self):
+           name=self.cleaned_data.get("name")
+           if (name.isdigit()) or (name.isalnum()):
+               raise forms.ValidationError("Name should not contain digit")
+
         
 
 class EnquiryForm(forms.ModelForm):
-    name=forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
-    company=forms.CharField(required =True)
-    post=forms.CharField(required =True)
-    mail=forms.EmailField(required =True)
-    contact_Number=PhoneNumberField()
-    city=forms.CharField(required =True)
-    description=forms.CharField(widget=forms.Textarea(
-                                        attrs={
-                                            'rows' : 4, 
-                                            'cols' : 23,
-                                            'class' : 'form-control'
-                                            }))
-    class Meta :
+        class Meta :
         model = Enquiry
         fields = [
             'name',
@@ -88,5 +73,10 @@ class EnquiryForm(forms.ModelForm):
             'city',
             'description'
         ]
+        def clean(self):
+           name=self.cleaned_data.get("name")
+           if (name.isdigit()) or (name.isalnum()):
+               raise forms.ValidationError("Name should not contain digit")
+
        
    
