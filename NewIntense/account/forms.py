@@ -30,7 +30,7 @@ class candidateRegForm(UserCreationForm):
     gender = forms.ChoiceField(choices=GND_CHOICES, widget=forms.RadioSelect())
     father_name = forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
     education = forms.CharField(required =True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
-    PAN_number = forms.CharField(required =False,validators=[RegexValidator(regex='^.{10}$', message='Length has to be 10', code='nomatch')])
+    PAN_number = forms.CharField(required =False)
     Aadhar_number=forms.CharField(required =False,validators=[numeric,RegexValidator(regex='^.{12}$', message='Length has to be 12', code='nomatch')])
     location = forms.CharField(required = True,validators=[RegexValidator(r'[a-zA-Z]+', 'Only  characters.')])
     last_salary = forms.CharField(required =False,validators=[numeric])
@@ -41,6 +41,15 @@ class candidateRegForm(UserCreationForm):
         model = User
     
     @transaction.atomic
+    def clean(self):
+        PAN_number=self.cleaned_data.get("PAN_number")
+        if (PAN_number.isalpha())or (PAN_number.isdigit()) :
+            raise forms.ValidationError("Enter correct PAN Number ")
+        if len(PAN_number)<10:
+            raise forms.ValidationError("PAN Number should 10 contain digits")
+        if len(PAN_number) > 10:
+            raise forms.ValidationError("PAN Number should 10 contain digits")
+
     def save(self):
         user = super().save(commit=False)
         user.is_candidate = True
@@ -118,10 +127,11 @@ class EditProfileForm(forms.ModelForm):
     def clean(self):
         first_name=self.cleaned_data.get("first_name")
         last_name=self.cleaned_data.get("last_name")
-        if first_name.isdigit():
+        if (first_name.isdigit()) or (first_name.isalnum()):
             raise forms.ValidationError("Name should not contain digit")
-        if last_name.isdigit():
+        if (last_name.isdigit()) or (last_name.is_alnum()):
             raise forms.ValidationError("Name should not contain digit")
+
 
 
 class EditCandidateProfile(forms.ModelForm):
@@ -143,7 +153,7 @@ class EditCandidateProfile(forms.ModelForm):
         phone_no=self.cleaned_data.get("phone_no")
         PAN_number=self.cleaned_data.get("PAN_number")
         Aadhar_number=self.cleaned_data.get("Aadhar_number")
-        if father_name.isdigit():
+        if (father_name.isdigit()) or (father_name.isalnum()):
             raise forms.ValidationError("Name should not contain digit")
         if phone_no.isalpha():
             raise forms.ValidationError("Number should contain digit")
