@@ -25,17 +25,73 @@ from rest_framework.views import APIView
 
 
 def homepage(request):
-	# if request.user.is_authenticated:
-	# 	if request.user.is_partner:
-	# 		return redirect('homepage')
-	# 	else:
-	# 	    return redirect('homepage')
-	# else:
-		return render(request = request,
-					template_name = "home.html",
-					# context = {"jobs" : Job.objects.all}
-					)
+	if request.user.is_authenticated:
+		if request.user.is_partner:
+			jobArr= Commission.objects.all()
+			page = request.GET.get('page', 1)
+			paginator = Paginator(jobArr, 6)
+			try:
+				jjob = paginator.page(page)
+			except PageNotAnInteger:
+				jjob = paginator.page(1)
+			except EmptyPage:
+				jjob = paginator.page(paginator.num_pages)
+			jobArr1=Commission.objects.order_by().values('job_title').distinct()
+			jobArr2=Commission.objects.order_by().values('city').distinct()
+			role_val = request.GET.get('role')
+			city_val = request.GET.get('city')
+			district_val = request.GET.get('role')
+			if role_val !='' and role_val is not None:
 
+				jjob = jobArr.filter(job_title__icontains = role_val) 
+			elif city_val !='' and city_val is not None:
+				jjob = jobArr.filter(city__icontains = city_val) 
+		else :
+			jobArr= Job.objects.all()
+			page = request.GET.get('page', 1)
+			paginator = Paginator(jobArr, 18)
+			try:
+				jjob = paginator.page(page)
+			except PageNotAnInteger:
+				jjob = paginator.page(1)
+			except EmptyPage:
+				jjob = paginator.page(paginator.num_pages)
+			jobArr1=Job.objects.order_by().values('job_title').distinct()
+			jobArr2=Job.objects.order_by().values('city').distinct()
+			role_val = request.GET.get('role')
+			city_val = request.GET.get('city')
+			district_val = request.GET.get('role')
+			if role_val !='' and role_val is not None :
+				jjob = jobArr.filter(job_title__icontains = role_val)
+			elif city_val !='' and city_val is not None :
+				jjob = jobArr.filter(city__icontains = city_val) 
+	else :
+			jobArr= Job.objects.all()
+			page = request.GET.get('page', 1)
+			paginator = Paginator(jobArr, 18)
+			try:
+				jjob = paginator.page(page)
+			except PageNotAnInteger:
+				jjob = paginator.page(1)
+			except EmptyPage:
+				jjob = paginator.page(paginator.num_pages)
+			jobArr1=Job.objects.order_by().values('job_title').distinct()
+			jobArr2=Job.objects.order_by().values('city').distinct()
+			role_val = request.GET.get('role')
+			city_val = request.GET.get('city')
+			district_val = request.GET.get('role')
+			if role_val !='' and role_val is not None :
+				jjob = jobArr.filter(job_title__icontains = role_val)
+			elif city_val !='' and city_val is not None :
+				jjob = jobArr.filter(city__icontains = city_val) 
+
+	return render(request = request,
+					template_name = "home.html",
+					 context = {
+						 "jjob" : jjob,
+					 	'jobArr1' : jobArr1,
+						'jobArr2' : jobArr2,}
+					)
 def about(request):
 	return render(request = request,
 		 		  template_name = "about.html",
