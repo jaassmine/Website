@@ -39,6 +39,7 @@ border: none;
 .navbar img{
     margin-left: 0.6em;
     height: 3em;
+    overflow: hidden !important;
     /* border-radius: 40%; */
 }
 
@@ -127,99 +128,7 @@ footer img{
     width: 8rem;
 }
 
-/* .bg-modal
-{
-    /* margin: 50px;
-	width: 80%;
-	height: 90%; 
-	background-color: rgb(255, 255, 255);
-	position: absolute;
-	top: 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	display: none;
-}
 
-.bg-modal .modal-content { 
-    padding: 20px 20px 20px 20px; 
-    -webkit-animation-name: modal-animation; 
-    -webkit-animation-duration: 0.5s; 
-    animation-name: modal-animation; 
-    animation-duration: 0.5s; 
-} 
-  
-@-webkit-keyframes modal-animation { 
-    from { 
-        top: -100px; 
-        opacity: 0; 
-    } 
-    to { 
-        top: 0px; 
-        opacity: 1; 
-    } 
-} 
-  
-@keyframes modal-animation { 
-    from { 
-        top: -100px; 
-        opacity: 0; 
-    } 
-    to { 
-        top: 0px; 
-        opacity: 1; 
-    } 
-}  */
-
-/* .modal-content
-{
-	width: 400px;
-	height: 300px;
-	background-color: white;
-	border-radius: 4px;
-	text-align: center;
-	padding: 20px;
-	position: relative;
-
-} */
-
-/* .modal-content img {
-	border-radius: 50%;
-} */
-/* .modal-content input
-{
-	width:60%;
-	display: block ;
-	margin:15px auto;
-} */
-
-.close{
-	position: absolute;
-	top: 0 ;
-	right: 14px;
-	font-size: 42px;
-	color: black !important ;
-    transform: rotate(45deg);
-    cursor :pointer;
-}
-
-
-.wave{
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	height: 100%;
-	z-index: -1;
-}
-
-/* #loginContainer{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap :7rem;
-    padding: 0 2rem;
-} */
 
 .img{
 	display: flex;
