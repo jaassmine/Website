@@ -151,10 +151,14 @@ class EditCandidateProfile(forms.ModelForm):
             raise forms.ValidationError("Number should 10 contain digits")
         if len(phone_no)>10 :
             raise forms.ValidationError("Number should 10 contain digits")
+        if (PAN_number.isalpha())or (PAN_number.isdigit()) :
+            raise forms.ValidationError("Enter correct PAN Number ")
         if len(PAN_number)<10:
             raise forms.ValidationError("PAN Number should 10 contain digits")
         if len(PAN_number) > 10:
             raise forms.ValidationError("PAN Number should 10 contain digits")
+        if Aadhar_number.isalpha():
+            raise forms.ValidationError("Enter Correct Aadhar Number")
         if  len(Aadhar_number) < 12:
             raise forms.ValidationError("Aadhar Number should 12 contain digit")
         if  len(Aadhar_number) > 12:
@@ -173,6 +177,8 @@ class EditPartnerProfile(forms.ModelForm):
         ]
     def clean(self):
         phone_no=self.cleaned_data.get("phone_no")
+        if phone_no.isalpha():
+            raise forms.ValidationError("Number should contain digit")
         if len(phone_no)<10  :
             raise forms.ValidationError("Number should 10 contain digits")
         if len(phone_no)>10 :
