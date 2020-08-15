@@ -95,12 +95,8 @@
     <div class=" text-white ">
       <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <!-- <table>
-          <tr colspan=2> -->
-            {{form | crispy}}
-              <button type="submit" class="btn btn-primary text-white">Submit</button>
-          <!-- </tr>
-        </table> -->
+        {{form | crispy}}
+        <button type="submit" class="btn btn-primary text-white">Submit</button>
       </form> 
      
     </div>

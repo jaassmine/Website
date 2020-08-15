@@ -128,10 +128,6 @@ def jobs(request):
 def apply(request,pk):
 	jjob = Job.objects.get(pk=pk)
 	cc=Candidate.objects.get(user =  request.user)
-	# initial_data={
-	# 	'candidate': request.user.username,
-	# 	'job' : jjob.job_title
-	# }
 	if Apply.objects.filter(job = jjob, candidate = cc).exists():
 		messages.error(request,'You have already applied for this job')
 	else :
@@ -139,13 +135,11 @@ def apply(request,pk):
 			form = ApplicationForm( request.POST , request.FILES )
 			if form.is_valid():
 				post = form.save(commit = False)
-				#post.candidate = request.user.username
 				post.candidate = Candidate.objects.get(user =  request.user)
 				post.job = Job.objects.get(pk = pk )
 				post.save()
 				messages.success(request,' You have applied  successfully for this job')
-				# form.save()
-			 else :
+			else :
 				messages.error(request,'Enter Correct Data') 
 
 	form = ApplicationForm()

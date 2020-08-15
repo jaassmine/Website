@@ -54,7 +54,7 @@ class EnquiryAdmin(admin.ModelAdmin):
 
 class ApplyPAdmin(admin.ModelAdmin):
 
-	list_display = ('partner' , 'job', 'name' ,'email',,'contact_Number')
+	list_display = ('partner' , 'job', 'name' ,'email','contact_Number')
 	list_filter = ('partner' , 'job','current_City','gender')	
 	search_fields = ['job__job_title' , 'partner__user__username']
 
