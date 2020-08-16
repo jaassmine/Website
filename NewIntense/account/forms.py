@@ -127,9 +127,9 @@ class EditProfileForm(forms.ModelForm):
     def clean(self):
         first_name=self.cleaned_data.get("first_name")
         last_name=self.cleaned_data.get("last_name")
-        if (first_name.isdigit()) or (first_name.isalnum()):
+        if (first_name.isdigit()) :
             raise forms.ValidationError("Name should not contain digit")
-        if (last_name.isdigit()) or (last_name.is_alnum()):
+        if (last_name.isdigit()) :
             raise forms.ValidationError("Name should not contain digit")
 
 
@@ -153,7 +153,7 @@ class EditCandidateProfile(forms.ModelForm):
         phone_no=self.cleaned_data.get("phone_no")
         PAN_number=self.cleaned_data.get("PAN_number")
         Aadhar_number=self.cleaned_data.get("Aadhar_number")
-        if (father_name.isdigit()) or (father_name.isalnum()):
+        if (father_name.isdigit()) :
             raise forms.ValidationError("Name should not contain digit")
         if phone_no.isalpha():
             raise forms.ValidationError("Number should contain digit")
