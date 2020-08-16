@@ -22,7 +22,7 @@ class ContactForm(forms.ModelForm):
             'message']
      def clean(self):
         name=self.cleaned_data.get("name")
-        if (name.isdigit()) or (name.isalnum()):
+        if (name.isdigit()) :
             raise forms.ValidationError("Name should not contain digit")
 
         
@@ -39,7 +39,7 @@ class ApplicationForm(forms.ModelForm):
             'upload_Resume']
        def clean(self):
            name=self.cleaned_data.get("name")
-           if (name.isdigit()) or (name.isalnum()):
+           if (name.isdigit()):
                raise forms.ValidationError("Name should not contain digit")
 
     
@@ -56,7 +56,7 @@ class ApplicationFormP(forms.ModelForm):
             'upload_Resume']
         def clean(self):
            name=self.cleaned_data.get("name")
-           if (name.isdigit()) or (name.isalnum()):
+           if (name.isdigit()) :
                raise forms.ValidationError("Name should not contain digit")
 
         
@@ -75,7 +75,7 @@ class EnquiryForm(forms.ModelForm):
         ]
         def clean(self):
            name=self.cleaned_data.get("name")
-           if (name.isdigit()) or (name.isalnum()):
+           if (name.isdigit()):
                raise forms.ValidationError("Name should not contain digit")
 
        
