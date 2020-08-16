@@ -229,31 +229,31 @@ def applyp(request,pk):
 
 @login_required(login_url='account:loginp')
 def patcomm(request):
-	jobAr= Commission.objects.all()
+	jobArr= Commission.objects.all()
 	page = request.GET.get('page', 1)
-	paginator = Paginator(jobAr, 6)
+	paginator = Paginator(jobArr, 6)
 	try:
 		jjob = paginator.page(page)
 	except PageNotAnInteger:
 		jjob = paginator.page(1)
 	except EmptyPage:
 		jjob = paginator.page(paginator.num_pages)
-	jobAr1=Commission.objects.order_by().values('job_title').distinct()
-	jobAr2=Commission.objects.order_by().values('city').distinct()
+	jobArr1=Commission.objects.order_by().values('job_title').distinct()
+	jobArr2=Commission.objects.order_by().values('city').distinct()
 	role_val = request.GET.get('role')
 	city_val = request.GET.get('city')
 	district_val = request.GET.get('role')
 	if role_val !='' and role_val is not None:
 
-		jjob = jobAr.filter(job_title__icontains = role_val) 
+		jjob = jobArr.filter(job_title__icontains = role_val) 
 	elif city_val !='' and city_val is not None:
-		jjob = jobAr.filter(city__icontains = city_val) 
-	if not jobAr :
+		jjob = jobArr.filter(city__icontains = city_val) 
+	if not jobArr :
 		messages.error(request,'Currently there are 0 jobs')
 	context = {
-		'jobAr' : jobAr,
-		'jobAr1' : jobAr1,
-		'jobAr2' : jobAr2,
+		'jobArr' : jobArr,
+		'jobArr1' : jobArr1,
+		'jobArr2' : jobArr2,
 		'jjob' : jjob
 	}
 
