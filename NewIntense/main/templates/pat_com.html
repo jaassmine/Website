@@ -54,13 +54,13 @@
             <div class="form-group">
             <select class="form-control" id="sel1" name="role">
                 <option disabled selected>Job Role</option>
-             	{% for comm in jobAr1 %}
+             	{% for comm in jobArr1 %}
                 <option>{{comm.job_title}}</option>
                 {% endfor %}
             </select>
             <select class="form-control" id="sel1" name="city">
                 <option disabled selected>City</option>
-                {% for comm in jobAr2 %}
+                {% for comm in jobArr2 %}
                 <option>{{comm.city}}</option>
                 {% endfor %}
             </select>
@@ -72,7 +72,7 @@
     
     </section>
 
-    {% for comm in jobAr %}
+    {% for comm in jjob %}
 
     <div class="card-group mx-auto">
         <div class="card">
