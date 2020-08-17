@@ -13,6 +13,7 @@ GND_CHOICES = (
 numeric = RegexValidator(r'^[0-9+]', 'Only digit characters.')
 
 class ContactForm(forms.ModelForm):
+    message= forms.CharField(required=True,widget=forms.Textarea(attrs={'rows': 4,'cols':23}))
     class Meta:
         model = Contact
         fields = [
@@ -39,6 +40,7 @@ class ApplicationForm(forms.ModelForm):
             'upload_Resume']
        def clean(self):
            name=self.cleaned_data.get("name")
+
            if (name.isdigit()):
                raise forms.ValidationError("Name should not contain digit")
 
