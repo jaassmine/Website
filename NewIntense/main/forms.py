@@ -30,17 +30,16 @@ class ContactForm(forms.ModelForm):
 
 class ApplicationForm(forms.ModelForm):
         class Meta:
-        model = Apply
-        fields = [
-            'name',
-            'email',
-            'contact_Number',
-            'gender',
-            'current_City',
-            'upload_Resume']
+           model = Apply
+           fields = [
+               'name',
+               'email',
+               'contact_Number',
+               'gender',
+               'current_City',
+               'upload_Resume']
        def clean(self):
            name=self.cleaned_data.get("name")
-
            if (name.isdigit()):
                raise forms.ValidationError("Name should not contain digit")
 
@@ -48,14 +47,14 @@ class ApplicationForm(forms.ModelForm):
         
 class ApplicationFormP(forms.ModelForm):
         class Meta:
-        model = ApplyP
-        fields = [
-            'name',
-            'email',
-            'contact_Number',
-            'gender',
-            'current_City',
-            'upload_Resume']
+           model = ApplyP
+           fields = [
+               'name',
+               'email',
+               'contact_Number',
+               'gender',
+               'current_City',
+               'upload_Resume']
         def clean(self):
            name=self.cleaned_data.get("name")
            if (name.isdigit()) :
@@ -65,16 +64,16 @@ class ApplicationFormP(forms.ModelForm):
 
 class EnquiryForm(forms.ModelForm):
         class Meta :
-        model = Enquiry
-        fields = [
-            'name',
-            'company',
-            'post',
-            'mail',
-            'contact_Number',
-            'city',
-            'description'
-        ]
+           model = Enquiry
+           fields = [
+               'name',
+               'company',
+               'post',
+               'mail',
+               'contact_Number',
+               'city',
+               'description'
+           ]
         def clean(self):
            name=self.cleaned_data.get("name")
            if (name.isdigit()):
