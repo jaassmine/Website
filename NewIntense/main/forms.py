@@ -21,7 +21,7 @@ class ContactForm(forms.ModelForm):
             'mail',
             'contact_Number',
             'message']
-     def clean(self):
+    def clean(self):
         name=self.cleaned_data.get("name")
         if (name.isdigit()) :
             raise forms.ValidationError("Name should not contain digit")
@@ -38,9 +38,9 @@ class ApplicationForm(forms.ModelForm):
                'gender',
                'current_City',
                'upload_Resume']
-       def clean(self):
-           name=self.cleaned_data.get("name")
-           if (name.isdigit()):
+        def clean(self):
+            name=self.cleaned_data.get("name")
+            if (name.isdigit()):
                raise forms.ValidationError("Name should not contain digit")
 
     
