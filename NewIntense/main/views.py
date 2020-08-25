@@ -127,7 +127,7 @@ def contact(request):
 
 		send_mail(
 			'Message from '+message_name, #subject
-			message ,  #message
+			message +' Send a reply to this query at : '+message_email,  #message
 			message_email ,  # from emails
 			['intenseplacement.ip@gmail.com'],
 		)
@@ -135,7 +135,8 @@ def contact(request):
 		form = ContactForm(request.POST)
 		if form.is_valid():
 			form.save()
-			messages.info(request,'Data Submitted Successfully') 
+			messages.info(request,'Thanks ,We have recieved your email and will respond shortly...') 
+
 		else :
 			messages.error(request,'Enter Correct Data') 
 
