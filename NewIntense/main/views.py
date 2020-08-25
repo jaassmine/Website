@@ -129,7 +129,7 @@ def contact(request):
 			'Message from '+message_name, #subject
 			message ,  #message
 			message_email ,  # from emails
-			['intense@gmail.com'],
+			['intenseplacement.ip@gmail.com'],
 		)
 		messages.info(request , message_name)
 		form = ContactForm(request.POST)
